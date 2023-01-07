@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "JSON schema for VISBOT releases",
   "exports": {
-    "./schema.json": "./schema.json"
+    "./schema.json": "./schema/pack.json"
   },
   "scripts": {
 		"prepare": "husky install",
