@@ -1,0 +1,91 @@
+{
+	"$schema": "https://json-schema.org/draft/2019-09/schema",
+	"$id": "https://visbot.github.io/schema/pack.json",
+	"type": "object",
+	"default": {},
+	"title": "AVS Pack Schema",
+	"required": ["id", "name", "publisher", "presets"],
+	"properties": {
+		"id": {
+			"type": "string"
+		},
+		"name": {
+			"type": "string"
+		},
+		"publisher": {
+			"type": "object",
+			"required": ["author", "namespace"],
+			"properties": {
+				"namespace": {
+					"type": "string",
+					"pattern": "^[a-z0-9]{1}[a-z0-9.-_]*$",
+					"minLength": 1
+				},
+				"author": {
+					"type": "string",
+					"minLength": 1
+				},
+				"contributors": {
+					"type": "array",
+					"minItems": 1,
+					"uniqueItems": true,
+					"items": {
+						"type": "string"
+					}
+				}
+			}
+		},
+		"tags": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"type": "string"
+			}
+		},
+		"presets": {
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
+			"items": {
+				"type": "object",
+				"required": ["file", "size", "checksum", "timestamp"],
+				"properties": {
+					"file": {
+						"type": "string"
+					},
+					"size": {
+						"type": "integer",
+						"minimum": 0,
+						"maximum": 4294967295
+					},
+					"checksum": {
+						"type": "string",
+						"pattern": "^(sha1:[a-f0-9]{40}|sha256:[a-f0-9]{64}|sha384:[a-f0-9]{96}|sha512:[a-f0-9]{128})$"
+					},
+					"timestamp": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"plugins": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "string"
+						}
+					},
+					"assets": {
+						"type": "array",
+						"uniqueItems": true,
+						"items": {
+							"type": "string"
+						}
+					},
+					"custom": {
+						"type": "object"
+					}
+				}
+			}
+		}
+	}
+}

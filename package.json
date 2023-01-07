@@ -1,0 +1,24 @@
+{
+  "name": "@visbot/schema",
+  "version": "0.0.0",
+  "description": "JSON schema for VISBOT releases",
+  "exports": {
+    "./schema.json": "./schema.json"
+  },
+  "scripts": {
+		"prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-plugin-json": "^3.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0"
+  },
+		"lint-staged": {
+				"schema.json": "eslint --cache --fix"
+		}
+}
